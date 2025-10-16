@@ -26,7 +26,12 @@ class Usuario(models.Model):
 
     # Campo para armazenar o telefone do usuário
     telefone = models.CharField(max_length=15)
-    endereco = models.CharField(max_length=255)
+
+    # Campo para armazenar o endereço do usuário
+    rua = models.CharField(max_length=255)
+    numero_casa = models.CharField(max_length=10)
+    bairro = models.CharField(max_length=100)
+    cidade = models.CharField(max_length=100)
 
     # O campo de nome e email já existem no modelo User, então não precisa repetir.
     # E o mais importante: A SENHA será gerenciada pelo modelo User do Django
@@ -59,6 +64,12 @@ class processo_administrativo(models.Model):
 
     # Relacionamento com o modelo User
     user_fk = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    # Endereço relacionado ao processo administrativo
+    rua = models.CharField(max_length=255)
+    numero_casa = models.CharField(max_length=10)
+    bairro = models.CharField(max_length=100)
+    cidade = models.CharField(max_length=100)
 
     # Descrição da solicitação
     descricao = models.TextField()
